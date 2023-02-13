@@ -1,4 +1,5 @@
-# Python_pr
+# Python_practice
 practice python_method and python_language
-python practice
-let's go!!
+python practice let's go!!
+
+- [Python_Input]
