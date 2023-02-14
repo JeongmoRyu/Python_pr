@@ -4,3 +4,4 @@ python practice let's go!!
 
 - [Python_Input](practice/python_input.md)
 - [Python_Number](practice/python_number.md)
+- [Python_Number]
