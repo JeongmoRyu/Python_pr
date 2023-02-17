@@ -6,4 +6,4 @@ python practice let's go!!
 - [Python_Number](practice/python_number.md)
 - [Python_Number2](practice/python_number2.md)
 - [calendar,leap_common_year](practice/calendar.md)
-- [word_game]
+- [word_game](practice/word_game.md)
