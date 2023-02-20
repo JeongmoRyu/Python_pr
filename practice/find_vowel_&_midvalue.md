@@ -1,4 +1,4 @@
-# Find_vowel_&_minvalue (모음 갯수 찾기 & 단어 중앙 값 찾기)
+# Find_vowel_&_midvalue (모음 갯수 찾기 & 단어 중앙 값 찾기)
 
 ## 모음 갯수 찾기
 - 아, 에, 이, 오, 우
