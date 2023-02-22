@@ -10,3 +10,4 @@ python practice let's go!!
 - [palindrome_&_anagram](practice/palindrome_anagram.md)
 - [find_vowel_midvalue](practice/find_vowel_&_midvalue.md)
 - [reserved_words](practice/resersved_words.md)
+- [len_num&hide_num](practice/len_and_hide.md)
