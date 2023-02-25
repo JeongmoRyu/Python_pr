@@ -1,4 +1,4 @@
-# Brute_force_patten_pr
+# Brute_force_pattern_pr
 
 ```python
 target = 'abacdabcdabcabcdef'
