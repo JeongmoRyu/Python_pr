@@ -13,4 +13,4 @@ python practice let's go!!
 - [len_num&hide_num](practice/len_and_hide.md)
 - [find_robber_and_put_in_password](practice/find_robber_and_put_in_password.md)
 - [triangle_square](practice/triangle_square.md)
-- [Brute_force_pattern_pr](practice/brute_force_pattern.md)
+- 
