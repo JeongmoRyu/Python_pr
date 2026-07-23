@@ -1,6 +1,37 @@
-def solve():
+def solve(models, logs):
 
-    answer = 0
+    rates = {}
+    for model in models:
+        name, p_cost, c_cost = model.split()
+        rates[name] = (int(p_cost), int(c_cost))
+    user_cost = {}
+    
+    for log in logs:
+        time, user_id, model_name, p_token, c_token = log.split()
+        p_tok = int(p_token)
+        c_tok = int(c_token)
+        
+        p_rate, c_rate = rates[model_name]
+        cost = p_rate*p_tok + c_rate*c_tok
+        
+        if p_tok + c_tok >= 1000:
+            cost = int(cost*0.9)
+        
+        h, m  = map(int, time.split(":"))
+        minutes = h * 60 + m
+        if 9 * 60 <= minutes < 18*60:
+            cost = int(cost * 1.2)
+        
+        if user_id not in user_cost:
+            user_cost[user_id] = 0
+        user_cost[user_id] += cost
+    
+    answer = []
+    for user_id in sorted(user_cost.keys()):
+        answer.append(f"{user_id} {user_cost[user_id]}")
+
+
+    
     return answer
 
 
@@ -17,7 +48,7 @@ logs2 = [
     "12:00 user2 basic 10 10"
 ]
 
-print(f"Test 1: {solve(models1, logs1)}")
+# print(f"Test 1: {solve(models1, logs1)}")
 # Expected: ['u1 18360', 'u2 5000']
 
 print(f"Test 2: {solve(models2, logs2)}")
