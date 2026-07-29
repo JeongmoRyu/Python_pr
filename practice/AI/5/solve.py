@@ -1,6 +1,36 @@
-def solve():
+from collections import defaultdict, deque
+"""
+-------------------------------------------------------------
+"""
+def solve(N, times, deps):
+    graph = defaultdict(list)
+    indegree = [0] * (N + 1)
+    
+    for a, b in deps:
+        graph[a].append(b)
+        indegree += 1
 
-    answer = 0
+    dp = [0] * (N+1)
+    for i in range(1, N+1):
+        dp[i] = times[i-1]
+        
+    q = deque()
+    for i in range(1, N+1):
+        if indegree[i] == 0:
+            q.append(i)
+    
+    while q:
+        cur = q.popleft()
+        
+        for next in graph[cur]:
+            dp[next] = max(dp[next], dp[cur] + times[next - 1])
+            indegree[next] -= 1
+            if indegree[next] == 0:
+                q.append(next)
+    
+    
+
+    answer = max(dp[1:])
     return answer
 
 
