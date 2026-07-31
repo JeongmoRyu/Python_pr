@@ -1,6 +1,36 @@
-def solve():
+from collections import OrderedDict
+"""
+orderdict
+move_to_end(id)
+popitem
+popitem(last=False)
+"""
+def solve(cap, reqs):
+    cache = OrderedDict()
+    current = 0
+    total = 0
+    
+    for req in reqs:
+        id, token_str = req.split()
+        token = int(token_str)
+        if id in cache:
+            total += 1
+            cache.move_to_end(id)
+        else:
+            total += token
+            
+            if token > cap:
+                continue
+                
+            while current + token > cap:
+                _, end_token = cache.popitem(last=False)
+                current -= end_token
+            
+            cache[id] = token
+            current += token
+            
 
-    answer = 0
+    answer = total
     return answer
 
 
