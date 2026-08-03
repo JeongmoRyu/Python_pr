@@ -1,6 +1,28 @@
-def solve():
+from collections import deque
 
-    answer = 0
+def solve(temps, w, limit):
+    
+    q = deque()
+    result = []
+    
+    for i in range(len(temps)):
+        if q and q[0] < i - w + 1:
+            q.popleft()
+
+        while q and temps[q[-1]] <= temps[i]:
+            q.pop()
+        
+        q.append(i)
+        
+        if i > w - 1:
+            max_temp = temps[q[0]]
+            
+            if max_temp >= limit:
+                idx = i - w + 1
+                result.append(idx)
+    
+
+    answer = result
     return answer
 
 # --- 테스트 실행 영역 ---
