@@ -1,6 +1,27 @@
-def solve():
+def solve(reqs, M):
+    if sum(reqs) <= M:
+        return max(reqs)
+    
+    min_num = 0
+    max_num = max(reqs)
+    
+    best = 0
+    
+    while min_num <= max_num:
+        mid = (min_num + max_num) // 2
+        total = 0
+        for req in reqs:
+            total += min(req, mid)
+        
+        if total <= M:
+            best = mid
+            min_num = mid + 1
+        
+        else:
+            max_num = mid - 1
+        # print (best)  
 
-    answer = 0
+    answer = best
     return answer
 
 
