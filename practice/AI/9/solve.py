@@ -1,6 +1,38 @@
-def solve():
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.count = 0
 
-    answer = 0
+def solve(words, queries):
+    root = TrieNode()
+    
+    for word in words:
+        curr  = root
+        curr.count += 1
+        
+        for char in word:
+            if char not in curr.children:
+                curr.children[char] = TrieNode()
+            curr = curr.children[char]
+            curr.count += 1
+    
+    result = []
+    for query in queries:
+        curr  = root
+        found = True
+        
+        for char in query:
+            if char not in curr.children:
+                found = False
+                break
+            curr = curr.children[char]
+        
+        if found:
+            result.append(curr.count)
+        else:
+            result.append(0)
+
+    answer = result
     return answer
 
 
