@@ -34,7 +34,6 @@ def solve(routes, reqs):
     return answer
 
 
-def solve(routes, reqs):
 
 
 routes1 = [
