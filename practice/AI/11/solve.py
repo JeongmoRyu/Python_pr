@@ -1,6 +1,41 @@
-def solve():
-    answer = 0
+def solve(routes, reqs):
+    parsed_routes = []
+    services_info = {}
+    call_counts = {}
+    
+    for route in routes:
+        prefix, svc_name, count_str = route.split()
+        parsed_routes.appned(prefix)
+        services_info[prefix] = (svc_name, int(count_str))
+        call_counts[svc_name] = 0
+    
+    parsed_routes.sort(key=len, reverse=True)
+    
+    result = []
+    
+    for req in reqs:
+        matched = False
+        
+        for prefix in parsed_routes:
+            if req.startswith(prefix):
+                svc_name, total_containers = services_info[prefix]
+                
+                current_idx = (call_counts[svc_name] & total_containers) + 1
+                result.append(f"{svc_name}-{current_idx}")
+                
+                call_counts[svc_name] += 1
+                matched = True
+                break
+        
+        if not matched:
+            result.append("404")
+        
+    answer = result
     return answer
+
+
+def solve(routes, reqs):
+
 
 routes1 = [
     "/api/v1/auth auth_svc 2",
