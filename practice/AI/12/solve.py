@@ -1,5 +1,21 @@
-def solve():
-    answer = 0
+def solve(logs):
+    event = []
+    for start, end in logs:
+        event.append((start, 1))
+        event.append((end + 1, -1))
+    
+    event.sort(key=lambda x: (x[0], x[1]))
+    
+    max_users = 0
+    curr = 0
+    
+    for time, diff in event:
+        curr += diff
+        if curr > max_users:
+            max_users = curr
+    
+    
+    answer = max_users
     return answer
 
 
