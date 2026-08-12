@@ -1,5 +1,18 @@
-def solve():
-    answer = 0
+def solve(N, edges, start, end, K):
+    distances = [float('inf')]*N
+    distances[start] = 0
+    
+    for hop in range(K+1):
+        temp = distances[:]
+        for u, v, w in edges:
+            if distances[u] != float('inf') and distances[u] + w < temp[v]:
+                temp[v] = distances[u] + w
+        
+        distances = temp
+    
+    if distances[end] == float('inf'):
+        return -1
+    answer = distances[end]
     return answer
 
 
